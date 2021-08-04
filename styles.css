@@ -1,0 +1,78 @@
+body {
+    display: grid;
+    place-content: center;
+    background-color: rgb(38, 38, 40);
+    height: 100vh;
+}
+
+.boardBG {
+    display: grid;
+    width: 850px;
+    height: 850px;
+    place-content: center;
+    background-color: #ccd5ae;
+    border-radius: 15px;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(8, 100px);
+    width: 800px;
+    height: 800px;
+
+
+}
+
+
+.tile {
+    width: 100px;
+    height: 100px;
+    display: grid;
+    border-radius: 15px;
+    place-content: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.black-tile {
+    background-color: #d4a373;
+}
+
+.white-tile {
+    background-color: #fefae0;
+    border: black;
+}
+
+
+.player {
+    width:  100px;
+    height: 100px;
+    display: grid;
+    /* background: url('./images/block.png'); */
+    background-repeat: no-repeat;
+    background-color: black;
+    border-radius: 15px;
+    
+
+    background-position: center;
+
+}
+
+.tile .player:hover {
+    cursor: grab;
+}
+
+.tile .player:active {
+    cursor: grabbing;
+    /* opacity: 0.5; */
+}
+.droppable{
+	width: 100px; 
+	height: 100px;
+    display: flex;
+    place-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
