@@ -1,7 +1,7 @@
 body {
     display: grid;
     place-content: center;
-    background-color: rgb(107, 107, 186);
+    background-color: rgb(38, 38, 40);
     height: 100vh;
 }
 
@@ -49,14 +49,10 @@ body {
     width:  100px;
     height: 100px;
     display: grid;
-    /* background: url('./images/block.png'); */
-    background-repeat: no-repeat;
-    background-color: black;
-    border-radius: 15px;
-    
+    background: url('./images/fill-character.png');
 
     background-position: center;
-
+    
 }
 
 .tile .player:hover {
