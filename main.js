@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
                  
                 // render player
                 if (i == 4 && j == 3) {
+
                     let player = document.createElement("div");
                     player.className = 'player';
                     document.getElementById('4,3').appendChild(player);
@@ -34,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
+    // get player 
+    var player = document.querySelector('.player');
     // get the tiles from the board
     var tiles = board.querySelectorAll('.tile');
     
@@ -42,42 +45,45 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('mousemove', dragmove);
     document.addEventListener('mouseup', dragdrop);
 
-    // tile listeners
-    for (const tile of tiles) { // always check if (activePiece)
-        tile.addEventListener('mousedown', currenthover);
-        tile.addEventListener('mouseenter', hovering);
-        tile.addEventListener('mouseleave', nothover);
+    // tile hover on while mouse is down on player
+    function mouseMoveFunction(e) {
+        const j = Math.floor((e.clientX - board.offsetLeft) / 100); 
+        const i = Math.floor((e.clientY - board.offsetTop) / 100);
+        var id = i + "," + j;
+        document.getElementById(id).classList.add('hover')
+        for (const tile of tiles) {
+            if (tile != document.getElementById(id) && tile.classList.contains('hover')){
+                tile.classList.remove('hover')
+            }
+        }
+    
     }
+    player.addEventListener("mousedown", function(e){
+        player.onmousemove = function(e) {
+            mouseMoveFunction(e);
+        }
+    });
     
-    // initialize active player as none
-    let activePiece = null;
-    
-    // Tile functions
-    function currenthover(e) {
-        // if (activePiece) {
-        //     const j = Math.floor((e.clientX - board.offsetLeft - 40) / 100); // padding was __px
-        //     const i = Math.floor((e.clientY - board.offsetTop - 40) / 100);
-        //     var id = i + "," + j;
-        //     this.style.backgroundColor = 'black';
-        // }
+    player.addEventListener("mouseup", function(e){
+        const j = Math.floor((e.clientX - board.offsetLeft) / 100); 
+        const i = Math.floor((e.clientY - board.offsetTop) / 100);
+        var id = i + "," + j;
+        if (document.getElementById(id).classList.contains('hover')) {
+            document.getElementById(id).classList.remove('hover')
+        }
+        player.onmousemove = null
+    });
+
+
+    var active = false;
+    // tile listeners
+    for (const tile of tiles) {
+
     }
 
-    function hovering(e) {
-        // if (activePiece) {
-        //     const j = Math.floor((e.clientX - board.offsetLeft - 40) / 100); // padding was __px
-        //     const i = Math.floor((e.clientY - board.offsetTop - 40) / 100);
-        //     var id = i + "," + j;
-        //     this.style.backgroundColor = 'black';
-        // }
-    }
-    function nothover(e) {
-        // if (activePiece) {
-        //     const j = Math.floor((e.clientX - board.offsetLeft - 40) / 100); // padding was __px
-        //     const i = Math.floor((e.clientY - board.offsetTop - 40) / 100);
-        //     var id = i + "," + j;
-        //     this.style.backgroundColor = 'white';
-        // }
-    }
+    // initialize active player as none
+    let activePiece = null;
+    var isToggling = false;
 
     // drag functions
     // Center the player to the mouse position on mousdown
@@ -93,15 +99,14 @@ document.addEventListener('DOMContentLoaded', function() {
             element.style.top = y + "px";
             
             activePiece = element;
+            // console.log('current ' + activePiece.parentNode.id);
         }
     }
-
 
     // move the piece wherever the mouse is while the mouse is still down
     function dragmove(e) {
 
         if (activePiece) {
-            
             // constrain player to board while moving the piece to current mouse position
             activePiece.style.position = 'absolute';
             const minX = board.offsetLeft - 20;
@@ -126,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 activePiece.style.top = y + "px";
             }
-
             // (ternerary operator method) same thing as this ^^ 
             // activePiece.style.left =
             //     (x < minX)
@@ -137,6 +141,39 @@ document.addEventListener('DOMContentLoaded', function() {
             // (y < minY)
             //     ? minY + "px"
             //     : y + "px";
+
+            // Get mouse coords while mouse is down
+            // const j = Math.floor((e.clientX - board.offsetLeft) / 100); 
+            // const i = Math.floor((e.clientY - board.offsetTop) / 100);
+
+            // old_id = activePiece.parentNode.id
+            // var new_id = i + "," + j;
+
+            // var oldtile = document.getElementById(old_id);
+            // var newtile = document.getElementById(new_id);
+
+            // console.log('         old ' + old_id + ' new ' + new_id);
+            
+            // if (new_id == old_id) {
+            //     oldtile.classList.add('hover');
+            //     console.log(oldtile.classList)
+                
+            // } else {
+            //     newtile.classList.add('hover');
+            //     if (oldtile.classList.contains('hover')) {
+            //         newtile.classList.remove('hover');
+            //     }
+            // }
+            /* pseudocode
+            if the old = new:
+                get the old tile and add a  hover class to it
+                remove hover class from new tile
+            else:
+                get the new tile and add a hover class to it 
+                remove the hover class from old tile
+            */
+
+
 
         }
     }
@@ -149,11 +186,8 @@ document.addEventListener('DOMContentLoaded', function() {
             var player = document.querySelector('.player');
             
             // get the coordinates of the mousedrop wrt to board coordinates
-
-
-            const j = Math.floor((e.clientX - board.offsetLeft) / 100); // padding was 20px
+            const j = Math.floor((e.clientX - board.offsetLeft) / 100); 
             const i = Math.floor((e.clientY - board.offsetTop) / 100);
-            console.log(i,j);
 
             // prevent player from dropping to a non-real tile (outside of board)
             if (j < 0) {
@@ -176,19 +210,17 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 var id = i + "," + j;
                 if (id != e.target.parentNode.id) {
+                    audio.play();
                 }
-                audio.play();
                 // render a new board? naaaah
                 // remove player from last div, append player to new div with id as x, y coords
                 document.getElementById(e.target.parentNode.id).removeChild(player);
                 document.getElementById(id).appendChild(player);
                 activePiece.style.position = 'static';
-    
+
                 activePiece = null;
 
-            }
-
-            
+            }   
         }
     }
 

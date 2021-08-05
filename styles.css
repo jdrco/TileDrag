@@ -44,7 +44,6 @@ body {
     border: black;
 }
 
-
 .player {
     width:  100px;
     height: 100px;
@@ -63,12 +62,15 @@ body {
     cursor: grabbing;
     /* opacity: 0.5; */
 }
-.droppable{
-	width: 100px; 
-	height: 100px;
-    display: flex;
-    place-content: center;
-    justify-content: center;
-    align-items: center;
-}
 
+.player:active + .tile
+ {
+    background-color: yellow;
+ }
+
+.hover {
+    outline: 5px dashed rgba(0, 0, 0, 0.2);
+    outline-offset: -4.6px;
+    -moz-outline-radius: 15px;
+
+}
