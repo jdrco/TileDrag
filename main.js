@@ -46,44 +46,58 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('mouseup', dragdrop);
 
     // tile hover on while mouse is down on player
-    function mouseMoveFunction(e) {
-        const j = Math.floor((e.clientX - board.offsetLeft) / 100); 
-        const i = Math.floor((e.clientY - board.offsetTop) / 100);
-        var id = i + "," + j;
-        document.getElementById(id).classList.add('hover')
-        for (const tile of tiles) {
-            if (tile != document.getElementById(id) && tile.classList.contains('hover')){
-                tile.classList.remove('hover')
-            }
-        }
-    
-    }
+    // Reference: https://stackoverflow.com/questions/34483940/best-way-to-run-mousemove-only-on-mousedown-with-pure-javascript
     player.addEventListener("mousedown", function(e){
+        // call the mousemove function
         player.onmousemove = function(e) {
             mouseMoveFunction(e);
         }
     });
     
     player.addEventListener("mouseup", function(e){
+        // get the mouse coordinates to find the id of tile we are hovering over
         const j = Math.floor((e.clientX - board.offsetLeft) / 100); 
         const i = Math.floor((e.clientY - board.offsetTop) / 100);
         var id = i + "," + j;
-        if (document.getElementById(id).classList.contains('hover')) {
-            document.getElementById(id).classList.remove('hover')
+        // check if the mouse is actually on the board first 
+        if (document.getElementById(id)) {
+            if (document.getElementById(id).classList.contains('hover')) {
+                document.getElementById(id).classList.remove('hover')
+            }
+            // stop the mouse move function
+            player.onmousemove = null;
+        } else { // handle the case where the mouse isn't on board
+            for (const tile of tiles) {
+                if (tile.classList.contains('hover')) {
+                    tile.classList.remove('hover')
+                }
+            }
         }
-        player.onmousemove = null
     });
+    
+    function mouseMoveFunction(e) {
+        const j = Math.floor((e.clientX - board.offsetLeft) / 100); 
+        const i = Math.floor((e.clientY - board.offsetTop) / 100);
+        var id = i + "," + j;
 
-
-    var active = false;
-    // tile listeners
-    for (const tile of tiles) {
-
+        if (document.getElementById(id)) {
+            document.getElementById(id).classList.add('hover')
+            for (const tile of tiles) {
+                if (tile != document.getElementById(id) && tile.classList.contains('hover')) {
+                    tile.classList.remove('hover')
+                }
+            }
+        } else { // handle the case where mouse isn't on board
+            for (const tile of tiles) {
+                if (tile.classList.contains('hover')) {
+                    tile.classList.remove('hover')
+                }
+            }
+        }
     }
 
     // initialize active player as none
     let activePiece = null;
-    var isToggling = false;
 
     // drag functions
     // Center the player to the mouse position on mousdown
@@ -141,40 +155,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // (y < minY)
             //     ? minY + "px"
             //     : y + "px";
-
-            // Get mouse coords while mouse is down
-            // const j = Math.floor((e.clientX - board.offsetLeft) / 100); 
-            // const i = Math.floor((e.clientY - board.offsetTop) / 100);
-
-            // old_id = activePiece.parentNode.id
-            // var new_id = i + "," + j;
-
-            // var oldtile = document.getElementById(old_id);
-            // var newtile = document.getElementById(new_id);
-
-            // console.log('         old ' + old_id + ' new ' + new_id);
-            
-            // if (new_id == old_id) {
-            //     oldtile.classList.add('hover');
-            //     console.log(oldtile.classList)
-                
-            // } else {
-            //     newtile.classList.add('hover');
-            //     if (oldtile.classList.contains('hover')) {
-            //         newtile.classList.remove('hover');
-            //     }
-            // }
-            /* pseudocode
-            if the old = new:
-                get the old tile and add a  hover class to it
-                remove hover class from new tile
-            else:
-                get the new tile and add a hover class to it 
-                remove the hover class from old tile
-            */
-
-
-
         }
     }
 
