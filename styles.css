@@ -1,8 +1,87 @@
 body {
+    padding: 0;
+    margin: 0;
     display: grid;
     place-content: center;
     background-color: rgb(38, 38, 40);
     height: 100vh;
+}
+
+.head {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+h1 {
+
+    font-size: 65px;
+    color: white;
+    font-family: 'Shrikhand', cursive;
+    margin: 0;
+    display: block;
+    float: left;
+}
+
+.scores {
+    display: flex;
+    float: right;
+}
+
+.score {
+    font-family: 'Shrikhand', cursive;
+    display: block;
+    margin-top: 1rem;
+    background: #ccd5aeba;
+    
+    width: 200px;
+    height: 75px;
+    font-size: 25px;
+    border-radius: 15px;
+    color: rgba(255, 255, 255, 0.694);
+    text-align: center;
+}
+
+.start {
+    margin-left: 2rem;
+    border: none;
+    font-family: 'Shrikhand', cursive;
+    display: block;
+    margin-top: 1rem;
+    background: #f94141ba;
+    
+    width: 200px;
+    height: 60px;
+    font-size: 25px;
+    border-radius: 15px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.start:hover {
+    cursor: pointer;
+    background-color:rgba(244, 165, 96, 0.783);
+}
+
+.timer {
+    text-align: center;
+    font-size: 400px;
+    font-family: 'Shrikhand', cursive;
+    pointer-events: none;
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    top: 0;
+    bottom: 0;
+    margin: auto auto 393px auto;
+    width: 400px;
+    height: 400px;
+    opacity: 0.5;
+    background-color: rgba(255, 0, 0, 0);
+}
+
+.timer.hide {
+    display: none;
 }
 
 .boardBG {
@@ -22,7 +101,6 @@ body {
 
 
 }
-
 
 .tile {
     width: 100px;
@@ -49,6 +127,8 @@ body {
     height: 100px;
     display: grid;
     background: url('./images/fill-character.png');
+    /* background-color: rgb(38, 38, 40);
+    border-radius: 15px; */
 
     background-position: center;
     
@@ -73,4 +153,10 @@ body {
     outline-offset: -4.6px;
     -moz-outline-radius: 15px;
 
+}
+
+/* When game is on classes */
+.tile.target {
+    background-color: #f94141ba;
+    transition: background-color 0.5s ease;
 }
