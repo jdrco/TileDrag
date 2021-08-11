@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
     timer.classList.add('hide');
     var cycle;
     var count;
-    var interval = 10;
+    var interval = 500;
 
     var player = document.querySelector('.player');
     var tiles = board.querySelectorAll('.tile');
@@ -245,6 +245,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
+
+    // need to make it so that it chooses a tile that not already occupied
+    /*
+    Maybe make an array to store tiles that are occupied
+    then check the array if the id tile chosen is in the array
+    if it is: 
+        then choose a different tile and go through the array again 
+    if not: 
+        then the tile is allowed
+    
+    */
     function chooserandomtile() {
         
         cycle = setInterval(() => {
@@ -287,7 +298,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
     
 
 });

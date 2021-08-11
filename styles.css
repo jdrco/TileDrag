@@ -39,6 +39,7 @@ h1 {
     border-radius: 15px;
     color: rgba(255, 255, 255, 0.694);
     text-align: center;
+    user-select: none;
 }
 
 .start {
@@ -56,6 +57,7 @@ h1 {
     color: rgb(255, 255, 255);
     text-align: center;
     transition: all 0.3s ease;
+    user-select: none;
 }
 
 .start:hover {
