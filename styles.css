@@ -157,8 +157,13 @@ h1 {
 
 }
 
+
 /* When game is on classes */
-.tile.target {
-    background-color: #f94141ba;
+.black-tile.target {
+    background-color: #a44c35;
+    transition: background-color 0.5s ease;
+}
+.white-tile.target {
+    background-color: #ec776f;
     transition: background-color 0.5s ease;
 }

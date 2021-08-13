@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     initialize();
 
-    // Game-logic creation -------------------------------------------
+    // Game-logic creation ---------------------------------------------------------------------------------------------
     // initializing variable for game start
     var startbutton = document.querySelector('.start');
     var timer = document.querySelector('.timer');
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
         countdown(chooserandomtile);
 
         checktargethit(player);
-
+        gameover();
     }
 
     function countdown(callback) {
@@ -245,40 +245,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
-
-    // need to make it so that it chooses a tile that not already occupied
-    /*
-    Maybe make an array to store tiles that are occupied
-    then check the array if the id tile chosen is in the array
-    if it is: 
-        then choose a different tile and go through the array again 
-    if not: 
-        then the tile is allowed
-    
-    */
     function chooserandomtile() {
-        
+        clearInterval(cycle);
         cycle = setInterval(() => {
-            let id;
-            let lastId;
-            do {
-                let i_random = Math.floor(Math.random() * 8);  
-                let j_random = Math.floor(Math.random() * 8);
-                id = i_random + ',' + j_random;
-            } while (id === lastId)
-            lastId = id;
-
-            var target = document.getElementById(id);
-            if (target.classList.contains('target') || target.contains(player)) {
+            var tile = Math.floor(Math.random() * 64);
+            if (tiles[tile].classList.contains('target') || tiles[tile].contains(player)) {
+                clearInterval(cycle);
+                chooserandomtile();
             } else {
-                target.classList.add('target');
+                tiles[tile].classList.add('target');
             }
-
-            console.log(id);
-            console.log(document.getElementById(id));
             
         }, interval);
     }
+
+    /////// Breaks site when no squares left but is the fastest one
+    // function chooserandomtile() {
+    //     clearInterval(cycle);
+    //     cycle = setInterval(() => {
+    //         var counter = 0;
+    //         var tile = Math.floor(Math.random() * 64);
+    //         while (tiles[tile].classList.contains('target') || tiles[tile].contains(player)) {
+    //             tile = Math.floor(Math.random() * 64);
+    //         }
+    //         tiles[tile].classList.add('target');
+
+    //     }, interval);
+    // }
 
     function clearalltiles() {
 
@@ -297,6 +290,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById(id).classList.remove('target');
             }
         });
+    }
+
+    function gameover() {
+        for (const tile of tiles) {
+            tile.classList.remove('target');
+        }
     }
     
 
