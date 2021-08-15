@@ -88,13 +88,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // initialize active player as none
-        let activePiece = null;
+	let activePiece = null;
     
         // drag functions
         // Center the player to the mouse position on mousdown
         function dragstart(e) {
     
-            const element = e.target;
+	    const element = e.target;
             if (element.classList.contains('player')) {
                 
                 element.style.position = 'absolute';
@@ -259,26 +259,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, interval);
     }
 
-    /////// Breaks site when no squares left but is the fastest one
-    // function chooserandomtile() {
-    //     clearInterval(cycle);
-    //     cycle = setInterval(() => {
-    //         var counter = 0;
-    //         var tile = Math.floor(Math.random() * 64);
-    //         while (tiles[tile].classList.contains('target') || tiles[tile].contains(player)) {
-    //             tile = Math.floor(Math.random() * 64);
-    //         }
-    //         tiles[tile].classList.add('target');
-
-    //     }, interval);
-    // }
 
     function clearalltiles() {
-
         for (const tile of tiles) {
             tile.classList.remove('target');
         }
-
     }
 
     function checktargethit(player) {
