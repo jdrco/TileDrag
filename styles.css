@@ -1,4 +1,5 @@
 body {
+    /* overflow: hidden; */
     padding: 0;
     margin: 0;
     display: grid;
@@ -7,14 +8,19 @@ body {
     height: 100vh;
 }
 
+.container {
+    display: grid;
+    vertical-align: middle;
+
+}
+
 .head {
     display: block;
     margin-bottom: 1rem;
 }
 
 h1 {
-
-    font-size: 65px;
+    font-size: 50px;
     color: white;
     font-family: 'Shrikhand', cursive;
     margin: 0;
@@ -27,32 +33,59 @@ h1 {
     float: right;
 }
 
-.score {
+.score-container {
+    margin-left: 1rem;
     font-family: 'Shrikhand', cursive;
     display: block;
     margin-top: 1rem;
     background: #ccd5aeba;
-    
-    width: 200px;
+
+    width: 125px;
     height: 75px;
-    font-size: 25px;
+    font-size: 20px;
     border-radius: 15px;
     color: rgba(255, 255, 255, 0.694);
     text-align: center;
     user-select: none;
 }
 
+.score {
+    margin-top: 0;
+    font-size: 25px;
+}
+
+.time-container {
+    margin-left: 1rem;
+    font-family: 'Shrikhand', cursive;
+    display: block;
+    margin-top: 1rem;
+    background: #ccd5aeba;
+
+    width: 125px;
+    height: 75px;
+    font-size: 20px;
+    border-radius: 15px;
+    color: rgba(255, 255, 255, 0.694);
+    text-align: center;
+    user-select: none;
+}
+
+.time {
+    margin-top: 0;
+    font-size: 25px;
+}
+
 .start {
-    margin-left: 2rem;
+    margin-left: 1rem;
     border: none;
     font-family: 'Shrikhand', cursive;
     display: block;
     margin-top: 1rem;
     background: #f94141ba;
-    
-    width: 200px;
+
+    width: 60px;
     height: 60px;
-    font-size: 25px;
+    font-size: 15px;
     border-radius: 15px;
     color: rgb(255, 255, 255);
     text-align: center;
@@ -62,7 +95,7 @@ h1 {
 
 .start:hover {
     cursor: pointer;
-    background-color:rgba(244, 165, 96, 0.783);
+    background-color: rgba(244, 165, 96, 0.783);
 }
 
 .timer {
@@ -70,12 +103,13 @@ h1 {
     font-size: 400px;
     font-family: 'Shrikhand', cursive;
     pointer-events: none;
-    position: absolute; 
-    left: 0; 
-    right: 0; 
+    position: absolute;
+    vertical-align: middle;
+    left: 0;
+    right: 0;
     top: 0;
     bottom: 0;
-    margin: auto auto 393px auto;
+    margin: auto auto 290px auto;
     width: 400px;
     height: 400px;
     opacity: 0.5;
@@ -88,32 +122,47 @@ h1 {
 
 .boardBG {
     display: grid;
-    width: 850px;
+    /*width: 850px;
     height: 850px;
+
     place-content: center;
     background-color: #ccd5ae;
-    border-radius: 15px;
+    border-radius: 15px; */
 }
 
 #board {
     display: grid;
-    grid-template-columns: repeat(8, 100px);
-    width: 800px;
-    height: 800px;
-
+    grid-template-columns: repeat(8, 80px);
+    width: 640px;
+    height: 640px;
 
 }
 
 .tile {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     display: grid;
-    border-radius: 15px;
     place-content: center;
     justify-content: center;
     align-items: center;
-
 }
+
+[id="0,0"] {
+    border-radius: 15px 0 0 0;
+}
+
+[id="0,7"] {
+    border-radius: 0 15px 0 0;
+}
+
+[id="7,0"] {
+    border-radius: 0 0 0 15px;
+}
+
+[id="7,7"] {
+    border-radius: 0 0 15px 0;
+}
+
 
 .black-tile {
     background-color: #d4a373;
@@ -125,15 +174,15 @@ h1 {
 }
 
 .player {
-    width:  100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     display: grid;
-    background: url('./images/fill-character.png');
+    background: url('./images/img80.png');
     /* background-color: rgb(38, 38, 40);
     border-radius: 15px; */
 
     background-position: center;
-    
+
 }
 
 .tile .player:hover {
@@ -145,25 +194,45 @@ h1 {
     /* opacity: 0.5; */
 }
 
-.player:active + .tile
- {
+.player:active+.tile {
     background-color: yellow;
- }
+}
 
 .hover {
-    outline: 5px dashed rgba(0, 0, 0, 0.2);
+    outline: 4px dashed rgba(0, 0, 0, 0.2);
     outline-offset: -4.6px;
     -moz-outline-radius: 15px;
-
 }
 
 
 /* When game is on classes */
 .black-tile.target {
-    background-color: #a44c35;
+    background-color: #c14430;
     transition: background-color 0.5s ease;
 }
+
 .white-tile.target {
-    background-color: #ec776f;
+    background-color: #d76053;
     transition: background-color 0.5s ease;
+}
+
+@media (max-height:764px) {
+    .timer {
+        text-align: center;
+        font-size: 400px;
+        font-family: 'Shrikhand', cursive;
+        pointer-events: none;
+        position: absolute;
+        vertical-align: middle;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto auto 200px auto;
+        width: 400px;
+        height: 400px;
+        opacity: 0.5;
+        background-color: rgba(255, 0, 0, 0);
+
+    }
 }
