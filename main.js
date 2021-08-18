@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function () {
     timer.classList.add('hide');
     var cycle;
     var count;
-    var interval = 500;
+    var interval = 400;
 
     var player = document.querySelector('.player');
     var tiles = board.querySelectorAll('.tile');
@@ -260,12 +260,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function chooserandomtile() {
         clearInterval(cycle);
         cycle = setInterval(() => {
-            var tile = Math.floor(Math.random() * 64);
-            if (tiles[tile].classList.contains('target') || tiles[tile].contains(player)) {
+            // get a random time from 
+            var tile = tiles[Math.floor(Math.random() * tiles.length)];
+            console.log(tile);
+            if (tile.classList.contains('target') || tile.contains(player)) {
                 clearInterval(cycle);
                 chooserandomtile();
             } else {
-                tiles[tile].classList.add('target');
+                tile.classList.add('target');
             }
 
         }, interval);
@@ -278,8 +280,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 seconds--;
                 counting.innerHTML = seconds + "s";
                 if (seconds == 0) {
+                    counting.classList.remove('red');
                     clearInterval(countingdown);
                     gameover();
+                }
+                if (seconds == 10) {
+                    counting.classList.add('red');
                 }
             }, 1000)
         }, 3000)
