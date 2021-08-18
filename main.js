@@ -138,6 +138,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 // (y < minY)
                 //     ? minY + "px"
                 //     : y + "px";
+            } else {
+                // handle the case where mouse isn't on board
+                for (const tile of tiles) {
+                    if (tile.classList.contains('hover')) {
+                        tile.classList.remove('hover')
+                    }
+                }
             }
         }
 
@@ -145,13 +152,6 @@ document.addEventListener('DOMContentLoaded', function () {
         function dragdrop(e) {
 
             if (activePiece) {
-                // handle the case where mouse isn't on board
-                for (const tile of tiles) {
-                    if (tile.classList.contains('hover')) {
-                        tile.classList.remove('hover')
-                    }
-                }
-
                 var player = document.querySelector('.player');
 
                 // get the coordinates of the mousedrop wrt to board coordinates
@@ -211,7 +211,8 @@ document.addEventListener('DOMContentLoaded', function () {
     score.innerHTML = counter;
 
     var counting = document.querySelector('.time');
-    var seconds = 30;
+    const number = 30;
+    var seconds = number;
     counting.innerHTML = seconds + "s";
     var countingdown;
 
@@ -223,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.clear();
         clearalltiles();
         reset();
-        starttime();
+        starttime(gameover);
 
         // clear last intervals when player wants to start a new game
         clearInterval(count);
@@ -304,6 +305,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function gameover() {
+        seconds = number;
+        counting.innerHTML = seconds + "s";
+        clearInterval(cycle);
         for (const tile of tiles) {
             tile.classList.remove('target');
         }
