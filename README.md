@@ -6,6 +6,6 @@ Knowing that not a lot of people play chess online, I wanted to create a game th
 
 Even if you do know how to play chess, you can use this site to enchance your movement/mouse accuracy. 
 
-Tile drag is an addictive arcade game written in vanilla javascript. Hope youu enjoy!
+Tile drag is an addictive arcade game written in vanilla javascript. Hope you enjoy!
 
 https://tile-drag.netlify.app
