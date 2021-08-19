@@ -8,6 +8,21 @@ body {
     height: 100vh;
 }
 
+h5 {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.262);
+    font-family: 'Shrikhand', cursive;
+    text-align: center;
+    user-select: none;
+}
+
 .container {
     display: grid;
     vertical-align: middle;
@@ -23,9 +38,10 @@ h1 {
     font-size: 50px;
     color: white;
     font-family: 'Shrikhand', cursive;
-    margin: 0;
+    margin-top: 0;
     display: block;
     float: left;
+    user-select: none;
 }
 
 .scores {
@@ -239,6 +255,90 @@ h1 {
 }
 
 @media (max-height:764px) {
+
+
+    .start {
+        margin-left: 1rem;
+        border: none;
+        font-family: 'Shrikhand', cursive;
+        display: block;
+        margin-top: 1rem;
+        background: #f94141ba;
+
+        width: 50px;
+        height: 50px;
+        font-size: 12px;
+        border-radius: 15px;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        transition: all 0.3s ease;
+        user-select: none;
+    }
+
+    .head {
+        display: block;
+        margin-bottom: 0;
+    }
+
+    h1 {
+        font-size: 50px;
+        color: white;
+        font-family: 'Shrikhand', cursive;
+        margin-top: 0;
+        margin-bottom: 7px;
+        display: block;
+        float: left;
+        user-select: none;
+    }
+
+    .score-container {
+        margin-left: 1rem;
+        font-family: 'Shrikhand', cursive;
+        display: block;
+        margin-top: 1rem;
+        background: #ccd5aeba;
+
+        width: 125px;
+        height: 50px;
+        font-size: 15px;
+        border-radius: 15px;
+        color: rgba(255, 255, 255, 0.694);
+        text-align: center;
+        user-select: none;
+    }
+
+    .time-container {
+        margin-left: 1rem;
+        font-family: 'Shrikhand', cursive;
+        display: block;
+        margin-top: 1rem;
+        background: #ccd5aeba;
+
+        width: 125px;
+        height: 50px;
+        font-size: 15px;
+        border-radius: 15px;
+        color: rgba(255, 255, 255, 0.694);
+        text-align: center;
+        user-select: none;
+    }
+
+    h5 {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        /* margin-top: 48rem; */
+        margin-top: 3px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.262);
+        font-family: 'Shrikhand', cursive;
+        text-align: center;
+        user-select: none;
+    }
+
     .timer {
         text-align: center;
         font-size: 400px;
