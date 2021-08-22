@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Board/Player/Movement-logic creation -------------------------------------------
     function initialize() {
 
-        var audio = new Audio('./sounds/move1.mp3')
+        var audio = new Audio('./sounds/move2.mp3')
         //audio.volume = 0.5;
 
         // Creating the board. Set up the players initial position.
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function () {
     timer.classList.add('hide');
     var cycle;
     var count;
-    var interval = 400;
+    var interval = 100;
 
     var player = document.querySelector('.player');
     var tiles = board.querySelectorAll('.tile');
@@ -257,21 +257,55 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1000);
     }
 
+    /* chooseRandomTile function
+
+    tiles = [1,2,3,4]
+    hashMap = [empty]
+
+    set an interval
+        On every drop:
+            Check which tiles contain the target class from the tiles array
+            if it does contain a target tile:
+                Add everything except those to the hashMap
+            choose a random tile in the hashMap
+            clear the hashMap
+
+    */
     function chooserandomtile() {
+        var hashMap = []; 
+ 
         clearInterval(cycle);
         cycle = setInterval(() => {
-            // get a random time from 
-            var tile = tiles[Math.floor(Math.random() * tiles.length)];
-            console.log(tile);
-            if (tile.classList.contains('target') || tile.contains(player)) {
-                clearInterval(cycle);
-                chooserandomtile();
-            } else {
+            for (const tile of tiles) {
+                if (tile.classList.contains('target') || tile.contains(player)) {
+                    continue;
+                } else {
+                    hashMap.push(tile);
+                }
+            }
+            if (hashMap[0]) {
+                var tile = hashMap[Math.floor(Math.random() * hashMap.length)];
                 tile.classList.add('target');
             }
-
+            hashMap = [];
         }, interval);
-    }
+    }    
+    
+    // function chooserandomtile() {
+    //     clearInterval(cycle);
+    //     cycle = setInterval(() => {
+    //         // get a random time from 
+    //         var tile = tiles[Math.floor(Math.random() * tiles.length)];
+    //         console.log(tile);
+    //         if (tile.classList.contains('target') || tile.contains(player)) {
+    //             clearInterval(cycle);
+    //             chooserandomtile();
+    //         } else {
+    //             tile.classList.add('target');
+    //         }
+
+    //     }, interval);
+    // }
 
     function starttime(gameover) {
         setTimeout(() => {
