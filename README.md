@@ -8,4 +8,4 @@ Even if you do know how to play chess, you can use this site to enchance your mo
 
 Tile drag is an addictive arcade game written in vanilla javascript. Hope you enjoy!
 
-https://tile-drag.netlify.app
+https://jdrco.github.io/tile-drag/
