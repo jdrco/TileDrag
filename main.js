@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Board/Player/Movement-logic creation -------------------------------------------
     function initialize() {
 
-        var audio = new Audio('./sounds/move2.mp3')
+        var audio = new Audio('./sounds/move3.mp3')
         //audio.volume = 0.5;
 
         // Creating the board. Set up the players initial position.
