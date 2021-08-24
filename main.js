@@ -215,12 +215,11 @@ document.addEventListener('DOMContentLoaded', function () {
     level.innerHTML = currlevel;
 
     // After every 50 tiles hit, then level up
-    const levelRef = 5;
+    const levelRef = 25;
     var refer = levelRef;
 
     var gameOverScreen = document.querySelector('.gameover');
     gameOverScreen.classList.add('hide');
-
 
     startbutton.addEventListener('click', gameon, {
         once: false
