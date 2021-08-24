@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function () {
     timer.classList.add('hide');
     var cycle;
     var count;
-    var interval = 100;
+    var interval = 500;
 
     var player = document.querySelector('.player');
     var tiles = board.querySelectorAll('.tile');
@@ -210,11 +210,13 @@ document.addEventListener('DOMContentLoaded', function () {
     var counter = 0;
     score.innerHTML = counter;
 
-    var counting = document.querySelector('.time');
-    const number = 30;
-    var seconds = number;
-    counting.innerHTML = seconds + "s";
-    var countingdown;
+    var level = document.querySelector('.level');
+    var currlevel = 1;
+    level.innerHTML = currlevel;
+
+    var gameOverScreen = document.querySelector('.gameover');
+    gameOverScreen.classList.add('hide');
+
 
     startbutton.addEventListener('click', gameon, {
         once: false
@@ -222,9 +224,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function gameon() {
         console.clear();
+
         clearalltiles();
         reset();
-        starttime(gameover);
 
         // clear last intervals when player wants to start a new game
         clearInterval(count);
@@ -232,11 +234,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // count down before starting to pick random tiles
         countdown(chooserandomtile);
         checktargethit(player);
+        checkGame(gameover);
     }
 
     function reset() {
         counter = 0;
         score.innerHTML = counter;
+        gameOverScreen.classList.add('hide');
     }
 
     function countdown(callback) {
@@ -271,11 +275,12 @@ document.addEventListener('DOMContentLoaded', function () {
             clear the hashMap
 
     */
+
     function chooserandomtile() {
-        var hashMap = []; 
- 
+        var refer = 50;
         clearInterval(cycle);
         cycle = setInterval(() => {
+            var hashMap = [];
             for (const tile of tiles) {
                 if (tile.classList.contains('target') || tile.contains(player)) {
                     continue;
@@ -288,41 +293,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 tile.classList.add('target');
             }
             hashMap = [];
+
+            // Level logic
+            if (counter == refer && interval > 0) {
+                refer += counter;
+                console.log(counter);
+                clearInterval(cycle);
+                currlevel++;
+                level.innerHTML = currlevel;
+                interval -= 100;
+                cycle = setInterval(chooserandomtile, interval);
+            }
         }, interval);
-    }    
-    
-    // function chooserandomtile() {
-    //     clearInterval(cycle);
-    //     cycle = setInterval(() => {
-    //         // get a random time from 
-    //         var tile = tiles[Math.floor(Math.random() * tiles.length)];
-    //         console.log(tile);
-    //         if (tile.classList.contains('target') || tile.contains(player)) {
-    //             clearInterval(cycle);
-    //             chooserandomtile();
-    //         } else {
-    //             tile.classList.add('target');
-    //         }
-
-    //     }, interval);
-    // }
-
-    function starttime(gameover) {
-        setTimeout(() => {
-            clearInterval(countingdown);
-            countingdown = setInterval(() => {
-                seconds--;
-                counting.innerHTML = seconds + "s";
-                if (seconds == 0) {
-                    counting.classList.remove('red');
-                    clearInterval(countingdown);
-                    gameover();
-                }
-                if (seconds == 10) {
-                    counting.classList.add('red');
-                }
-            }, 1000)
-        }, 3000)
     }
 
     function clearalltiles() {
@@ -340,17 +322,32 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById(id).classList.remove('target');
                 counter++;
                 score.innerHTML = counter;
+
             }
         });
     }
 
     function gameover() {
-        seconds = number;
-        counting.innerHTML = seconds + "s";
+        gameOverScreen.classList.remove('hide');
         clearInterval(cycle);
         for (const tile of tiles) {
             tile.classList.remove('target');
         }
+    }
+
+    function checkGame(gameover) {
+        document.addEventListener('mousemove', () => {
+            var tileCount = 0;
+            for (const tile of tiles) {
+                if (tile.classList.contains('target')) {
+                    tileCount++;
+                }
+            }
+            console.log(tileCount);
+            if (tileCount == 63) {
+                gameover();
+            }
+        });
     }
 
 

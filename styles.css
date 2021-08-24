@@ -21,6 +21,7 @@ h5 {
     font-family: 'Shrikhand', cursive;
     text-align: center;
     user-select: none;
+    letter-spacing: 0.3px;
 }
 
 .container {
@@ -34,13 +35,31 @@ h5 {
     margin-bottom: 1rem;
 }
 
+.title {
+    margin-top: 0;
+    /*display: flex;*/
+    float: left;
+}
+
 h1 {
     font-size: 50px;
     color: white;
     font-family: 'Shrikhand', cursive;
-    margin-top: 0;
+    margin: 0;
     display: block;
-    float: left;
+
+    user-select: none;
+}
+
+p {
+    color: rgba(255, 255, 255, 0.262);
+    font-size: 15px;
+    font-family: 'Shrikhand', cursive;
+    /* font-style: italic; */
+    /* font-weight: bold; */
+    margin: 0 0 0 1rem;
+    display: block;
+    letter-spacing: 0.3px;
     user-select: none;
 }
 
@@ -70,20 +89,24 @@ h1 {
     font-size: 25px;
 }
 
-.time-container {
+.level-container {
     margin-left: 1rem;
     font-family: 'Shrikhand', cursive;
     display: block;
     margin-top: 1rem;
-    background: #ccd5aeba;
 
-    width: 125px;
+    width: 75px;
     height: 75px;
     font-size: 20px;
     border-radius: 15px;
     color: rgba(255, 255, 255, 0.694);
     text-align: center;
     user-select: none;
+}
+
+.level {
+    margin-top: 0;
+    font-size: 25px;
 }
 
 .time {
@@ -125,7 +148,7 @@ h1 {
     right: 0;
     top: 0;
     bottom: 0;
-    margin: auto auto 290px auto;
+    margin: auto auto 325px auto;
     width: 400px;
     height: 400px;
     opacity: 0.5;
@@ -254,6 +277,30 @@ h1 {
     transition: background-color 0.5s ease;
 }
 
+.level1 {
+    background-color: #ccd5aeba;
+}
+
+.gameover {
+    text-align: center;
+    font-size: 66px;
+    font-family: 'Shrikhand', cursive;
+    pointer-events: none;
+    position: absolute;
+    /* z-index: 10; */
+    vertical-align: middle;
+    top: 50%;
+    /* bottom: 50%; */
+    /* margin: auto auto 127px auto; */
+    width: 100%;
+    opacity: 0.5;
+    background-color: rgba(255, 0, 0, 0);
+}
+
+.gameover.hide {
+    display: none;
+}
+
 @media (max-height:764px) {
 
 
@@ -277,6 +324,7 @@ h1 {
 
     .head {
         display: block;
+        margin-top: 1rem;
         margin-bottom: 0;
     }
 
@@ -299,7 +347,7 @@ h1 {
         background: #ccd5aeba;
 
         width: 125px;
-        height: 50px;
+        height: 60px;
         font-size: 15px;
         border-radius: 15px;
         color: rgba(255, 255, 255, 0.694);
@@ -307,15 +355,16 @@ h1 {
         user-select: none;
     }
 
-    .time-container {
+    .level-container {
         margin-left: 1rem;
         font-family: 'Shrikhand', cursive;
         display: block;
         margin-top: 1rem;
+        margin-bottom: 0;
         background: #ccd5aeba;
 
-        width: 125px;
-        height: 50px;
+        width: 70px;
+        height: 60px;
         font-size: 15px;
         border-radius: 15px;
         color: rgba(255, 255, 255, 0.694);
@@ -327,7 +376,6 @@ h1 {
         position: relative;
         margin-left: auto;
         margin-right: auto;
-        /* margin-top: 48rem; */
         margin-top: 3px;
         left: 0;
         right: 0;
@@ -350,11 +398,31 @@ h1 {
         right: 0;
         top: 0;
         bottom: 0;
-        margin: auto auto 200px auto;
+        margin: auto auto 225px auto;
         width: 400px;
         height: 400px;
         opacity: 0.5;
         background-color: rgba(255, 0, 0, 0);
 
+
     }
+
+    /* .gameover {
+        text-align: left;
+        font-size: 66px;
+        font-family: 'Shrikhand', cursive;
+        pointer-events: none;
+        position: absolute;
+        vertical-align: middle;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto auto 27px auto;
+        width: 400px;
+        height: 400px;
+        opacity: 0.5;
+        background-color: rgba(255, 0, 0, 0);
+    } */
+
 }
