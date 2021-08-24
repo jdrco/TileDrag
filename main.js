@@ -245,6 +245,8 @@ document.addEventListener('DOMContentLoaded', function () {
         counter = 0;
         score.innerHTML = counter;
         gameOverScreen.classList.add('hide');
+        currlevel = 1;
+        level.innerHTML = currlevel;
     }
 
     function countdown(callback) {
@@ -329,7 +331,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById(id).classList.remove('target');
                 counter++;
                 score.innerHTML = counter;
-
             }
         });
     }
