@@ -214,6 +214,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var currlevel = 1;
     level.innerHTML = currlevel;
 
+    // After every 50 tiles hit, then level up
+    const levelRef = 50;
+    var refer = levelRef;
+
     var gameOverScreen = document.querySelector('.gameover');
     gameOverScreen.classList.add('hide');
 
@@ -277,7 +281,6 @@ document.addEventListener('DOMContentLoaded', function () {
     */
 
     function chooserandomtile() {
-        var refer = 50;
         clearInterval(cycle);
         cycle = setInterval(() => {
             var hashMap = [];
@@ -296,12 +299,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Level logic
             if (counter == refer && interval > 0) {
-                refer += counter;
+                refer = counter + levelRef;
                 console.log(counter);
                 clearInterval(cycle);
                 currlevel++;
                 level.innerHTML = currlevel;
-                interval -= 100;
+                if (currlevel > 3) {
+                    interval -= 25;
+                } else {
+                    interval -= 100;
+                }
                 cycle = setInterval(chooserandomtile, interval);
             }
         }, interval);
