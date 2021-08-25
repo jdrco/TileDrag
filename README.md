@@ -19,8 +19,13 @@ At first I made the logic of the game time based but decided that a "Don't let t
 - Styling with css (Positioning elemnts).
 
 #### Most Challenging Function:
-The function I had most trouble with was the "chooseRandomTile" function (inside the main.js), sincet this function required constant checking of how mny target tiles are on the board so that whatever random tile chosen isn't already targetted. Many times I broke my browser due to being stuck in an infinite loop or having a large runtime whiche made it slow. I was able to solve this function by using hashMap logic and arrays to get the function running in O(n) time. 
+The function I had most trouble with was the "chooseRandomTile" function (inside the main.js), sincet this function required constant checking of how mny target tiles are on the board so that whatever random tile chosen isn't already targetted. Many times I broke my browser due to being stuck in an infinite loop or having a large runtime whiche made it slow. I was able to solve this function by using hashMap logic and arrays to get the function running in O(n) time.
 
-Tile drag is an addictive arcade game written in vanilla javascript. Hope you enjoy!
+#### References:
+- Board Creation and grid snap logic: https://youtube.com/playlist?list=PLBmRxydnERkysOgOS917Ojc_-uisgb8Aj
+- Events referece: https://www.w3schools.com/jsref/dom_obj_event.asp
+- Mouse event help: https://stackoverflow.com/questions/34483940/best-way-to-run-mousemove-only-on-mousedown-with-pure-javascript
+
+#### Tile drag is an addictive arcade game written in vanilla javascript. Hope you enjoy!
 
 https://jdrco.github.io/tile-drag/
