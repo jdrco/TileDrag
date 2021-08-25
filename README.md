@@ -23,7 +23,7 @@ The function I had most trouble with was the "chooseRandomTile" function (inside
 
 #### References:
 - Board Creation and grid snap logic: https://youtube.com/playlist?list=PLBmRxydnERkysOgOS917Ojc_-uisgb8Aj
-- Events referece: https://www.w3schools.com/jsref/dom_obj_event.asp
+- Events summary: https://www.w3schools.com/jsref/dom_obj_event.asp
 - Mouse event help: https://stackoverflow.com/questions/34483940/best-way-to-run-mousemove-only-on-mousedown-with-pure-javascript
 
 #### Tile drag is an addictive arcade game written in vanilla javascript. Hope you enjoy!
