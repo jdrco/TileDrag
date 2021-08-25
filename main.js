@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
     level.innerHTML = currlevel;
 
     // After every {levelRef} tiles hit, then level up
-    const levelRef = 25;
+    const levelRef = 5;
     var refer = levelRef;
 
     var gameOverScreen = document.querySelector('.gameover');
@@ -241,12 +241,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function reset() {
+        console.log('damn')
         counter = 0;
         score.innerHTML = counter;
         gameOverScreen.classList.add('hide');
         currlevel = 1;
         level.innerHTML = currlevel;
         interval = 500;
+        refer = levelRef;
     }
 
     function countdown(callback) {
