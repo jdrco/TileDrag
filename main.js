@@ -246,6 +246,7 @@ document.addEventListener('DOMContentLoaded', function () {
         gameOverScreen.classList.add('hide');
         currlevel = 1;
         level.innerHTML = currlevel;
+        interval = 500;
     }
 
     function countdown(callback) {
