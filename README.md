@@ -15,7 +15,7 @@ At first I made the logic of the game time based but decided that a "Don't let t
 #### Main Learning Outcomes:
 - Passing the "event" object inside of event handlers.
 - Asychronous programming.
-- Algorithmic problem solving.
+- Algorithmic problem solving (finding the most efficient solution).
 - Styling with css (Positioning elemnts).
 
 #### Most Challenging Function:
