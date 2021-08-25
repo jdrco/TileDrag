@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('mouseup', dragdrop);
 
         // tile hover on while mouse is down on player
-        // Reference: https://stackoverflow.com/questions/34483940/best-way-to-run-mousemove-only-on-mousedown-with-pure-javascript
         player.addEventListener("mousedown", function (e) {
             // call the mousemove function
             player.onmousemove = function (e) {
@@ -195,7 +194,8 @@ document.addEventListener('DOMContentLoaded', function () {
     initialize();
 
     // Game-logic creation ---------------------------------------------------------------------------------------------
-    // initializing variable for game start
+   
+    // initializing variables for game start
     var startbutton = document.querySelector('.start');
     var timer = document.querySelector('.timer');
     timer.classList.add('hide');
@@ -230,7 +230,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         clearalltiles();
         reset();
-
         // clear last intervals when player wants to start a new game
         clearInterval(count);
         clearInterval(cycle);
@@ -268,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /* chooseRandomTile function
-
+    
     tiles = [1,2,3,4]
     hashMap = [empty]
 
