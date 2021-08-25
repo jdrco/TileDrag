@@ -106,8 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (activePiece) {
                 // constrain player to board while moving the piece to current mouse position
                 activePiece.style.position = 'absolute';
-                const minX = board.offsetLeft - 20;
-                const minY = board.offsetTop - 20;
+                const minX = board.offsetLeft - 0;
+                const minY = board.offsetTop - 0;
                 const maxX = board.offsetLeft + board.clientWidth - 80;
                 const maxY = board.offsetTop + board.clientHeight - 80;
                 var x = e.clientX - 39;
@@ -214,8 +214,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var currlevel = 1;
     level.innerHTML = currlevel;
 
-    // After every 50 tiles hit, then level up
-    const levelRef = 25;
+    // After every {levelRef} tiles hit, then level up
+    const levelRef = 5;
     var refer = levelRef;
 
     var gameOverScreen = document.querySelector('.gameover');
@@ -255,10 +255,8 @@ document.addEventListener('DOMContentLoaded', function () {
         count = setInterval(function () {
             time--;
             if (time > 0) {
-                console.log(time)
                 timer.innerHTML = time;
             } else {
-                console.log(time)
                 timer.innerHTML = null;
                 clearInterval(count);
                 callback();
@@ -280,7 +278,6 @@ document.addEventListener('DOMContentLoaded', function () {
             clear the hashMap
 
     */
-
     function chooserandomtile() {
         clearInterval(cycle);
         cycle = setInterval(() => {
@@ -301,14 +298,15 @@ document.addEventListener('DOMContentLoaded', function () {
             // Level logic
             if (counter == refer && interval > 0) {
                 refer = counter + levelRef;
-                console.log(counter);
                 clearInterval(cycle);
                 currlevel++;
                 level.innerHTML = currlevel;
-                if (currlevel > 3) {
-                    interval -= 25;
+                if (currlevel > 5) {
+                    // cap off at 100ms
+                    console.log(interval);
                 } else {
                     interval -= 100;
+                    console.log(interval);
                 }
                 cycle = setInterval(chooserandomtile, interval);
             }
@@ -350,7 +348,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     tileCount++;
                 }
             }
-            console.log(tileCount);
             if (tileCount == 63) {
                 gameover();
             }
