@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 clearInterval(cycle);
                 currlevel++;
                 level.innerHTML = currlevel;
-                if (currlevel > 5) {
+                if (currlevel > 4) {
                     // cap off at 100ms
                     console.log(interval);
                 } else {
