@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
     level.innerHTML = currlevel;
 
     // After every {levelRef} tiles hit, then level up
-    const levelRef = 5;
+    const levelRef = 25;
     var refer = levelRef;
 
     var gameOverScreen = document.querySelector('.gameover');
