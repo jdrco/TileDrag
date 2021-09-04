@@ -1,5 +1,4 @@
 # Tile Drag
-#### Video Demo:
 #### Description:
 I've always found the game UI experience on sites like chess.com or lichess.com addictive and exciting (only when I'm winning).
 Part of the reason I love online chess is because of the movement mechanics of the pieces which makes the game feel smooth and snappy.
