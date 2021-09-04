@@ -36,4 +36,4 @@ My main Learning outcomes were:
 
 #### Tile drag is an addictive arcade game written in vanilla javascript. Hope you enjoy!
 
-https://jdrco.github.io/tile-drag/
+https://jdrco.github.io/TileDrag/
