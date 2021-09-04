@@ -25,6 +25,10 @@ My main Learning outcomes were:
 - Algorithmic problem solving (finding the most efficient solution).
 - Styling with css (Positioning elemnts).
 
+#### Future plans for this project
+- Implementing a leaderboard score using a database.
+- Making the interface responsive to the window/screen size.
+
 #### References:
 - Board Creation and grid snap logic: https://youtube.com/playlist?list=PLBmRxydnERkysOgOS917Ojc_-uisgb8Aj
 - Events summary: https://www.w3schools.com/jsref/dom_obj_event.asp
