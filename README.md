@@ -20,7 +20,7 @@ The main.js file is the main bulk of the project, since I was determined to writ
 At first I made the logic of the game time based but decided that a "Don't let the {blank} fill up" type of game would be more exciting and harder to program. This approach forced me to think of more effiecient functions in terms of runtime. I found that a times my game would crash because of a function's really long runtime or from an infinite loop. I had to make use of harder algorithmic based functions to combat these issues and make the game faster and smoother.
 
 # Challenges and Learning Outcomes
-The function I had most trouble with was the "chooseRandomTile" function (inside the main.js), sincet this function required constant checking of how mny target tiles are on the board so that whatever random tile chosen isn't already targetted. Many times I broke my browser due to being stuck in an infinite loop or having a large runtime whiche made it slow. I was able to solve this function by using hashMap logic with arrays to get the function running in O(n) time.
+The function I had most trouble with was the "chooseRandomTile" function (inside the main.js), sincet this function required constant checking of how mny target tiles are on the board so that whatever random tile chosen isn't already targetted. Many times I broke my browser due to being stuck in an infinite loop or having a large runtime whiche made it slow. I was able to solve this function with arrays to get the function running in O(n) time.
 
 My main Learning outcomes were:
 - Passing the "event" object inside of event handlers.
